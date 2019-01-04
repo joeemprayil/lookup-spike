@@ -1,0 +1,9 @@
+<div style="padding-top:20px">
+
+    <div><label style="text-transform: capitalize" [for]="name">{{name}}</label></div>
+    <p-autoComplete [(ngModel)]="customValue" [suggestions]="results" field="description" (completeMethod)="getResults($event)" [size]="30"
+      [minLength]="0" placeholder="Type to narrow results" [dropdown]="true" (onSelect)="valueSelected($event)" (onClear)="valueCleared($event)"
+      [forceSelection]="true" [inputId]="name" [autoHighlight]="true">
+    </p-autoComplete>
+    <span style="color: brown" *ngIf="showFailure">Failed to update!</span>
+</div>
