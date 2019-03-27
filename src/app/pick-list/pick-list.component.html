@@ -1,0 +1,59 @@
+<div>
+  <label>Angular Material</label>
+  <input type='checkbox' [(ngModel)]="material">
+
+  <label style="padding-left:20px">NG Prime Picklist</label>
+  <input type='checkbox' [(ngModel)]="primeng">
+</div>
+
+<div *ngIf="material">
+
+  <h2>Angular Material</h2>
+  <div class="example-container">
+    <h3>Available</h3>
+
+    <div
+      cdkDropList
+      #todoList="cdkDropList"
+      [cdkDropListData]="available"
+      [cdkDropListConnectedTo]="[doneList]"
+      class="example-list"
+      (cdkDropListDropped)="drop($event)">
+      <div class="example-box" *ngFor="let item of available" cdkDrag>{{item}}</div>
+    </div>
+  </div>
+
+  <div class="example-container">
+    <h3>Configured</h3>
+
+    <div
+      cdkDropList
+      #doneList="cdkDropList"
+      [cdkDropListData]="configured"
+      [cdkDropListConnectedTo]="[todoList]"
+      class="example-list"
+      (cdkDropListDropped)="drop($event)">
+      <div class="example-box" *ngFor="let item of configured" cdkDrag>{{item}}</div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="primeng">
+    <h2>Prime NG</h2>
+    <p-pickList [source]="availableObjects" [target]="configuredObjects" [responsive]="true" dragdrop="true"
+                [showSourceControls]="false" [showSourceFilter]="true" [showTargetFilter]="false" [filterBy]="'value'">
+        <ng-template let-column pTemplate="item">
+            <div class="ui-helper-clearfix">
+                <div style="font-size:14px;float:right">{{column.value}}</div>
+            </div>
+        </ng-template>
+    </p-pickList>
+</div>
+
+
+
+
+
+<!-- Copyright 2019 Google Inc. All Rights Reserved.
+    Use of this source code is governed by an MIT-style license that
+    can be found in the LICENSE file at http://angular.io/license -->
