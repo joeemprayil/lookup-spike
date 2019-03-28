@@ -10,44 +10,24 @@
 
   <h2>Angular Material</h2>
   <div class="example-container">
-    <h3>Available</h3>
-
-    <div
-      cdkDropList
-      #todoList="cdkDropList"
-      [cdkDropListData]="available"
-      [cdkDropListConnectedTo]="[doneList]"
-      class="example-list"
-      (cdkDropListDropped)="drop($event)">
-      <div class="example-box" *ngFor="let item of available" cdkDrag>{{item}}</div>
-    </div>
-  </div>
-
-  <div class="example-container">
-    <h3>Configured</h3>
-
-    <div
-      cdkDropList
-      #doneList="cdkDropList"
-      [cdkDropListData]="configured"
-      [cdkDropListConnectedTo]="[todoList]"
-      class="example-list"
-      (cdkDropListDropped)="drop($event)">
-      <div class="example-box" *ngFor="let item of configured" cdkDrag>{{item}}</div>
+    <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
+      <div class="example-box" *ngFor="let column of configuredObjects" cdkDrag>
+        {{column.value}} <button>X</button>
+      </div>
     </div>
   </div>
 </div>
 
-<div *ngIf="primeng">
+<div *ngIf="primeng" style="width:400px">
     <h2>Prime NG</h2>
-    <p-pickList [source]="availableObjects" [target]="configuredObjects" [responsive]="true" dragdrop="true"
-                [showSourceControls]="false" [showSourceFilter]="true" [showTargetFilter]="false" [filterBy]="'value'">
+    <p-orderList [value]="configuredObjects" [responsive]="true" dragdrop="true">
         <ng-template let-column pTemplate="item">
             <div class="ui-helper-clearfix">
-                <div style="font-size:14px;float:right">{{column.value}}</div>
+                <div style="float:left">{{column.value}}</div>
+                <div style="float:right"><button>X</button></div>
             </div>
         </ng-template>
-    </p-pickList>
+    </p-orderList>
 </div>
 
 
