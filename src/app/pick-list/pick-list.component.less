@@ -52,3 +52,22 @@
 .example-list.cdk-drop-list-dragging .example-box:not(.cdk-drag-placeholder) {
   transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
 }
+
+.columns {
+  width: 400px;
+  height: 600px;
+  border: 1px solid #ccc;
+  padding: 20px;
+  .column {
+    height: 30px;
+    border: 1px solid #ccc;
+    padding: 5px;
+    margin-bottom: 5px;
+
+    &.on-drag-start {
+      -webkit-box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.25);
+      -moz-box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.25);
+      box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.25);
+    }
+  }
+}

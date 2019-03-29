@@ -4,13 +4,16 @@
 
   <label style="padding-left:20px">NG Prime Picklist</label>
   <input type='checkbox' [(ngModel)]="primeng">
+
+  <label style="padding-left:20px">Custom</label>
+  <input type='checkbox' [(ngModel)]="custom">
 </div>
 
 <div *ngIf="material">
 
   <h2>Angular Material</h2>
   <div class="example-container">
-    <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
+    <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)" [cdkDropListLockAxis]="'y'">
       <div class="example-box" *ngFor="let column of configuredObjects" cdkDrag>
         {{column.value}} <button>X</button>
       </div>
@@ -28,6 +31,17 @@
             </div>
         </ng-template>
     </p-orderList>
+</div>
+
+<div *ngIf="custom">
+  <h2>Custom</h2>
+  <div id="columns" class="columns">
+      <div class="column" draggable="true" *ngFor="let column of configuredObjects"
+           (dragstart)="onDragstartMouse($event)" (dragend)="onDragendMouse($event)" (dragover)="onDragoverMouse($event)"
+           (touchstart)="onTouchStart($event)" (touchend)="onTouchEnd($event)" (touchmove)="onDrag($event)">
+        {{column.value}}
+      </div>
+    </div>
 </div>
 
 
