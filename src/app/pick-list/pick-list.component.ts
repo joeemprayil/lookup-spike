@@ -13,9 +13,9 @@ export class PickListComponent implements OnInit {
   custom = true;
   private selectedItemIndex;
   private sourceItemIndex;
-  private timer;
-  private lockTimer;
-  private touchduration = 400
+  // private timer;
+  // private lockTimer;
+  // private touchduration = 400
 
   private currentY: number;
   private startY: number;
@@ -55,22 +55,22 @@ export class PickListComponent implements OnInit {
     { 'value': 'Custom 30' }
   ];
 
-  onTouchStart(event) {
-    event.preventDefault();
-    if(this.lockTimer){
-      return;
-    }
-    this.timer = setTimeout(() => this.onDragstart(event), this.touchduration);
-    this.lockTimer = true;
-  }
+  // onTouchStart(event) {
+  //   event.preventDefault();
+  //   if(this.lockTimer){
+  //     return;
+  //   }
+  //   this.timer = setTimeout(() => this.onDragstart(event), this.touchduration);
+  //   this.lockTimer = true;
+  // }
 
-  onTouchEnd(event) {
-    if (this.timer){
-      clearTimeout(this.timer);
-      this.lockTimer = false;
-    }
-    this.onDragend(event);
-  }
+  // onTouchEnd(event) {
+  //   if (this.timer){
+  //     clearTimeout(this.timer);
+  //     this.lockTimer = false;
+  //   }
+  //   this.onDragend(event);
+  // }
 
   onDragstartMouse(event) {
     this.selectedItemIndex = this.getItemIndex(event.target.innerText);
